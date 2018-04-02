@@ -1,0 +1,32 @@
+<h3>Listado de Proveedores</h3>
+<a class="btn btn-primary float-md-right" routerLink="/addprovee">Añadir nuevo proveedor</a>
+<input type="search" class="form-control" placeholder="Teclee un proveedor..." [formControl]="campoBusqueda">
+
+<div *ngIf="cargando" class="text-center" style="padding-top:60px">
+  <img src="../../../assets/spinner.gif" alt="cargando">
+</div>
+
+<div *ngIf="resultados">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr class="filters">
+        <th>Nombre</th>
+        <th>Correo electrónico</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proveedor of proveedores">
+        <td>{{ proveedor.nombre }}</td>
+        <td>
+          <a href="mailto:{{ proveedor.email }}">{{ proveedor.email }}</a>
+        </td>
+        <td>{{ proveedor.telefono }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="noresultados">
+  <p>No existe ningúna coincidencia</p>
+</div>

@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col col-md"></div>
+  <div class="col-10 col-md-8">
+    <h2>Añadir nuevo proveedor</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="proveedorForm" action="">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre">
+      </div>
+      <div class="form-group">
+        <label for="cif">C.I.F.</label>
+        <input type="text" class="form-control" id="cif" formControlName="cif">
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input type="text" class="form-control" id="direccion" formControlName="direccion">
+      </div>
+      <div class="form-group">
+        <label for="cp">Código Postal</label>
+        <input type="text" class="form-control" id="cp" formControlName="cp">
+      </div>
+      <div class="form-group">
+        <label for="localidad">Localidad</label>
+        <input type="text" class="form-control" id="localidad" formControlName="localidad">
+      </div>
+      <div class="form-group">
+        <label for="provincia">Provincia</label>
+        <select class="form-control" id="provincia" formControlName="provincia">
+          <option value="">Seleccione la provincia</option>
+          <option *ngFor="let provincia of provincias" [value]="provincia">{{ provincia }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="number" class="form-control" id="telefono" formControlName="telefono">
+      </div>
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input type="text" class="form-control" id="email" formControlName="email">
+      </div>
+      <div class="form-group">
+        <label for="contacto">Persona de contacto</label>
+        <input type="text" class="form-control" id="contacto" formControlName="contacto">
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!proveedorForm.valid">
+        Añadir Proveedor</button>
+    </form>
+    <p class="aler alert-danger" *ngIf="!proveedorForm.valid">
+      Por favor complete todos los campos obligatorios
+    </p>
+  </div>
+  <div class="col col-md"></div>
+</div>
